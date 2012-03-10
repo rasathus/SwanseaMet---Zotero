@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?><style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" xml:lang="en">
+  
+  <info>    <title>Swansea Met. Numeric (Dev)</title>    <id>http://www.chrisfane.co.uk/Zotero/SwanseaMet/Dev</id>
+    <link href="http://www.chrisfane.co.uk/Zotero/SwanseaMet/Dev"/>    <author>      <name>Chris Fane</name>      <email>chris@fane.cc</email>    </author>
+    <category term="numeric"/>
+    <category term="generic-base"/>    <updated>2008-02-27 20:30:00+00:00</updated>    <summary>Numeric referencing style to comply with Swansea Met. referencing requirements.</summary>  </info>
+  
+  <macro name="author">
+    <names variable="author">      <name initialize-with="." delimiter=", " delimiter-precedes-last="always"/>      <label form="short" prefix=", " suffix="." text-case="capitalize-first"/>    </names>
+    <text value=", "/>
+  </macro>
+  
+  <macro name="editor">
+    <names variable="editor" suffix=", editor(s). ">
+      <name sort-separator=" " initialize-with="" name-as-sort-order="all" delimiter=", " delimiter-precedes-last="always"/>
+    </names>
+  </macro>
+  
+  <macro name="publisher">
+    <text variable="publisher" suffix=": "/>
+    <text variable="publisher-place" suffix=", "/>
+    <date variable="issued">
+      <date-part name="year"/>
+    </date>
+  </macro>
+  
+  <macro name="access">
+	<choose>	    
+   	  <if type="personal_communication">
+	  <text value=", [Email]"/>
+	  <group prefix=", " suffix="" delimiter=", ">
+	    <date variable="accessed" prefix="Dated: " suffix=" ">
+	    <date-part name="day" suffix="-"/>
+	    <date-part name="month" form="numeric" suffix="-"/>
+        <date-part name="year"/>
+	    </date>
+      </group>
+	  </if>	    
+    <else>
+    <group delimiter=" ">
+      <group>
+	  <choose>	    
+	    <if type="song">
+	    <text value="[Online]. Speech/Podcast" suffix=" "/>
+	    </if>	 
+        <else-if type="paper-conference">
+        </else-if>	    
+	    <else>
+	    <text value="[Online]." suffix=" "/>
+	    </else>
+	    </choose>
+	    <text value="Available At: "/>
+	    <text variable="URL"/>
+      </group>
+      <group prefix=", [" suffix="]" delimiter=", ">
+	    <date variable="accessed" prefix="Accessed: " suffix=" ">
+	    <date-part name="day" suffix="-"/>
+	    <date-part name="month" form="numeric" suffix="-"/>
+        <date-part name="year"/>
+	    </date>
+      </group>
+    </group>
+    </else>
+    </choose>        
+  </macro>
+  
+  <macro name="title">
+    <group delimiter=" ">
+      <text variable="title"/>
+    </group>
+  </macro>
+
+  <macro name="edition">
+	  <text variable="edition" suffix=" "/>
+  </macro>
+  
+  <citation>
+    <option name="collapse" value="citation-number"/>
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout prefix="[" suffix="]" delimiter=", ">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+  
+  <bibliography>
+    <option name="et-al-min" value="7"/>
+    <option name="et-al-use-first" value="6"/>
+    
+    <layout>
+      <text variable="citation-number" prefix="[" suffix="]  "/>
+      
+      <choose>
+	    <if type="book">
+	      <text macro="author"/>
+	      <text macro="title" font-style="italic" suffix=" , "/>
+	      <text macro="edition" prefix=" " suffix="Ed. , "/>
+	      <text macro="publisher" prefix=" " suffix="."/>
+	    </if>
+
+	    <else-if type="personal_communication">
+	      <text macro="author"/>
+	      <text macro="title" quotes="true" suffix=" "/>
+	      <text macro="access" suffix="."/>
+	    </else-if>
+
+	    <else-if type="paper-conference">
+	      <text macro="author"/>
+	      <text macro="title" quotes="true"/>
+	      <text variable="container-title" prefix=" , " suffix=", "/>
+	      <text variable="publisher" suffix=", "/>
+	      <date variable="issued" prefix="Presented: " suffix=" ">
+	      <date-part name="day" suffix="-"/>
+	      <date-part name="month" form="numeric" suffix="-"/>
+          <date-part name="year" suffix=", "/>
+          </date>
+	      <text macro="access" suffix="."/>
+	    </else-if>
+
+	    <else-if type="chapter">
+	      <text macro="author"/>
+	      <text macro="title" quotes="true" suffix=" "/>
+	      <text term="in" suffix=": " font-style="italic" text-case="capitalize-first"/>
+	      <text variable="container-title" font-style="italic" suffix=" , "/>
+	      <text macro="edition" prefix=" " suffix="Ed. , "/>
+	      <text macro="publisher" suffix=", "/>
+	      <text variable="page" prefix="p. " suffix=" ."/>
+	    </else-if>
+
+	    <else-if type="article-journal">
+	      <text macro="author"/>
+	      <text macro="title" quotes="true" suffix=" "/>
+	      <text variable="container-title" font-style="italic" suffix=" : " form="short"/>
+	      <text variable="volume" prefix="Volume: " suffix=", "/>
+	      <text variable="issue" prefix="Issue: " suffix=", "/>
+	      <text variable="page" prefix="p. " suffix=", "/>
+	      <date variable="issued" prefix="Published: " suffix=". ">
+	        <date-part name="month" form="short" suffix="-"/>
+            <date-part name="year"/>
+	      </date>
+	    </else-if>
+
+	    <else-if type="thesis">
+	      <text macro="author"/>
+	      <text macro="title" quotes="true" suffix=" , "/>
+	      <text variable="genre" form="short" suffix=", "/>
+	      <text variable="publisher" form="short" suffix=", "/>
+	      <date variable="issued">
+	      <date-part name="year" suffix="."/>          </date>
+	    </else-if>
+
+	    <else-if type="webpage article-newspaper article-magazine" match="any">
+	      <text macro="title" quotes="true" suffix=" "/>
+	      <text variable="container-title" suffix=", "/>
+	      <text variable="publisher" suffix=", "/>
+	      <date variable="issued" prefix="Published: " suffix=" ">
+	      <date-part name="day" suffix="-"/>
+	      <date-part name="month" form="numeric" suffix="-"/>
+          <date-part name="year" suffix=", "/>
+          </date>
+	      <text macro="access" suffix="."/>
+	    </else-if>
+	    
+	    <else-if type="song">
+	      <text macro="author"/>
+	      <text variable="collection-title" suffix=" - "/>
+	      <text variable="number" prefix="Episode " suffix=" - "/>
+	      <text macro="title" quotes="true" suffix=" , "/>
+	      <text macro="access" suffix="."/>
+	    </else-if>
+	      	    
+	    <else>
+	      <text macro="author"/>
+	      <text macro="title" font-style="italic" quotes="true" suffix=" "/>
+	      <group prefix=" " suffix=". ">
+	        <text term="in" suffix=": " text-case="capitalize-first"/>
+	        <text variable="container-title" suffix=" ; "/>
+	      </group>
+	      <text macro="edition" prefix=" " suffix=" "/>
+	      <text macro="publisher" prefix=" "/>
+	      <text variable="page" prefix=" p. " suffix="."/>
+	    </else>
+	    
+      </choose>
+    </layout>
+  </bibliography>
+</style>
