@@ -1,0 +1,6 @@
+== Summary ==
+Zotero is a great reference management system, and a great open source Endnote alternative. Zotero supports a wide range of word processing applications on most major platforms. For more information, and to download visit Zotero.org
+
+Whilst attending the university, I wrote a CSL style for Zotero, to comply with the Swansea Metropolitan University referencing standards. Version 1.1 is intended for use with the official release version
+
+Version 1.4 was intended for use with the development XPI, although by now I imagine these mappings have made their way into the trunk. This version adds support for referencing conference papers, emails and podcasts.
